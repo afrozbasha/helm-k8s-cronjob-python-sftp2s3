@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: simplecronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: simplecronjob
+            image: afrozbasha/sftp2s3:latest
+            imagePullPolicy: IfNotPresent
+            resources: {}
+          restartPolicy: OnFailure
